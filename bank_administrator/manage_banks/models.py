@@ -6,11 +6,17 @@ class Client(models.Model):
     name=models.CharField(max_length=50)
     age=models.IntegerField(validators=[MinValueValidator(18), MaxValueValidator(100)])
 
+    def __str__(self):
+        return self.name
+
 class BankAccount(models.Model):
     client=models.ForeignKey(Client, on_delete=models.CASCADE)
-    banckName= models.CharField(max_length=50)
-    accountNumber= models.CharField(max_length= 15)
+    bankName= models.CharField(max_length=50)
+    accountNumber= models.CharField(max_length= 15, primary_key=True)
     balance=models.FloatField(default=0)
+
+    def __str__(self):
+        return self.accountNumber
     
     """"Redondea balance en dos decimalestes de guardar en la DB"""
     def save(self, *args, **kwargs):

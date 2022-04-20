@@ -1,0 +1,7 @@
+<h1>{{client.name}} bank accounts</h1>
+<ul>
+    {% for account in client.bankaccount_set.all %}
+        <li ><p>Cuenta: <a href="{% url 'manage_banks:detail_bankAccount' account.accountNumber %}">{{account.accountNumber}}</a></p><p>Saldo: {{account.balance}}</p></li>
+    {% endfor %}
+</ul>
+<p><a href="{% url 'manage_banks:index' %}">Back</a></p>

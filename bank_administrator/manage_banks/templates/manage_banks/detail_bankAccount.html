@@ -1,0 +1,31 @@
+<h1>{{bankAccount.bankName}}</h1>
+<div>
+    <h3>Welcome {{bankAccount.client.name}} to your account {{bankAccount.accountNumber}}</h3>
+    <p>Balance: {{bankAccount.balance}}</p>
+</div>
+<div>
+    <form action="{% url 'manage_banks:charge_money' bankAccount.accountNumber %}" method='post'>
+        {% csrf_token %}
+        <fieldset>
+            {% if error_message_c %}
+            <p><strong>{{error_message_c}}</strong></p>
+            {% endif %}
+            <legend><h2>Top up bank account</h2></legend>
+            <label for="fname">Amount to be charge:</label><br>
+            <input type="text" id="fname" name="charge" ><br>
+            <input type="submit" value="submit">
+        </fieldset>
+    </form>
+    <form action="{% url 'manage_banks:charge_money' bankAccount.accountNumber %}" method='post'>
+        {% csrf_token %}
+        <fieldset>
+            <legend><h2>Transfer</h2></legend>
+            <label for="fname">Account:</label><br>
+            <input type="text" id="fname" name="account" ><br>
+            <label for="fname">Amount to be transferred:</label><br>
+            <input type="text" id="fname" name="amount" value="0.0"><br>
+            <input type="submit" value="submit">
+        </fieldset>
+    </form>
+    <p><a href="{% url 'manage_banks:detail' bankAccount.client.id %}">Back</a></p>
+</div>
