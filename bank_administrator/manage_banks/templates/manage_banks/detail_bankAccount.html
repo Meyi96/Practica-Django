@@ -16,11 +16,11 @@
             <input type="submit" value="submit">
         </fieldset>
     </form>
-    <form action="{% url 'manage_banks:charge_money' bankAccount.accountNumber %}" method='post'>
+    <form action="{% url 'manage_banks:transfer' bankAccount.accountNumber %}" method='post'>
         {% csrf_token %}
         <fieldset>
             {% if error_message_t %}
-            <p><strong>{{error_message_c}}</strong></p>
+            <p><strong>{{error_message_t}}</strong></p>
             {% endif %}
             <legend><h2>Transfer</h2></legend>
             <label for="fname">Account:</label><br>

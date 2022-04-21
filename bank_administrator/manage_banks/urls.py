@@ -6,6 +6,7 @@ urlpatterns = [
     path('',views.index, name='index'),
     path('<int:client_id>/', views.detail, name='detail'),
     path('bank/<int:bankaccount_id>/', views.detail_bankAccount, name='detail_bankAccount'),
-    path('update/<int:bankaccount_id>/', views.charge_money,name='charge_money')
+    path('update/<int:bankaccount_id>/', views.charge_money,name='charge_money'),
+    path('transfer/<int:bankaccount_id>/', views.transfer_money, name='transfer')
 
 ]
